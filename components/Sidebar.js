@@ -18,7 +18,7 @@ const Sidebar = () => {
     <div className="text-gray-500 p-5 text-sm border-r border-gray-900">
       <div className="space-y-4">
         <button
-          className="flex items-center space-x-2 hover:text-white"
+          className="flex items-center space-x-2 text-black bg-[#1CD75F] p-3 rounded-full"
           onClick={() => signOut()}
         >
           <p>Sign out</p>
