@@ -1,19 +1,13 @@
 import { getSession } from "next-auth/react";
-import Center from "../components/Center";
-import Player from "../components/Player";
-import Sidebar from "../components/Sidebar";
+// import Center from "../components/Center";
+import MainScreen from "../components/MainScreen";
 
 export default function Home() {
   return (
-    <div className="bg-black h-screen overflow-hidden">
-      <main className="flex">
-        <Sidebar />
-        <Center />
+    <div className="bg-black overflow-scroll w-full">
+      <main>
+        <MainScreen />
       </main>
-
-      <div className="sticky bottom-0">
-        <Player />
-      </div>
     </div>
   );
 }

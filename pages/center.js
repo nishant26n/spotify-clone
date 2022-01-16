@@ -2,11 +2,14 @@
 /* eslint-disable @next/next/no-img-element */
 import { useSession, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { shuffle } from "loadsh";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { playlistIdState, playlistState } from "../atoms/playlistAtom";
 import useSpotify from "../hooks/useSpotify";
-import Songs from "./Songs";
+import Songs from "../components/Songs";
+import Player from "../components/Player";
+import { ArrowLeftIcon } from "@heroicons/react/solid";
 
 const Center = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,6 +65,13 @@ const Center = () => {
       <section
         className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white p-8`}
       >
+        <Link href="/">
+          <a>
+            <button className="absolute top-7 text-white">
+              <ArrowLeftIcon className="h-6 w-6" />
+            </button>
+          </a>
+        </Link>
         <img
           className="h-44 w-44 shadow-2xl"
           src={playlist?.images?.[0]?.url}
@@ -77,6 +87,10 @@ const Center = () => {
 
       <div>
         <Songs />
+      </div>
+
+      <div className="sticky bottom-0">
+        <Player />
       </div>
     </div>
   );
