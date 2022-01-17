@@ -3,9 +3,7 @@ import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { playlistIdState } from "../atoms/playlistAtom";
-// import { currentTrackIdState, isPlayingState } from "../atoms/songAtom";
 import useSpotify from "../hooks/useSpotify";
-// import SpotifyAPI from "../lib/spotify";
 import RecentTrack from "./RecentTrack";
 
 const RecentPlayed = () => {
@@ -13,18 +11,6 @@ const RecentPlayed = () => {
   const { data: session } = useSession();
   const [tracks, setTracks] = useState([]);
   const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
-
-  // const [currentTrackId, setCurrentTrackId] =
-  //   useRecoilState(currentTrackIdState);
-  // const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-
-  // const playSong = () => {
-  //   setCurrentTrackId(tracks.id);
-  //   setIsPlaying(true);
-  //   SpotifyAPI.play({
-  //     uris: [tracks.uri],
-  //   });
-  // };
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
