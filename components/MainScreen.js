@@ -4,9 +4,10 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import useSpotify from "../hooks/useSpotify";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { playlistIdState } from "../atoms/playlistAtom";
 import Player from "./Player";
+import RecentPlayed from "./RecentPlayed";
 
 const MainScreen = () => {
   const spotifyApi = useSpotify();
@@ -25,23 +26,27 @@ const MainScreen = () => {
   return (
     <div className="text-white">
       <header className="mt-8 ml-3">
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex items-center">
           <img
-            className="rounded-full w-24 h-24"
+            className="rounded-full w-24 h-24 ml-3"
             src={session?.user.image}
             alt=""
           />
-          <div className="grid-flow-row text-center">
-            <h2 className="text-xl pt-1 pb-2">{session?.user.name}</h2>
-            <button
-              className="bg-green-600 p-2 items-center rounded-lg"
-              onClick={signOut}
-            >
-              Sign out
-            </button>
-          </div>
+          <h2 className="text-xl pt-1 pl-2">{session?.user.name}</h2>
         </div>
+        <button
+          className="w-20 bg-green-600 p-2 mt-3 ml-5 rounded-lg"
+          onClick={signOut}
+        >
+          Sign out
+        </button>
       </header>
+
+      <h2 className="pt-8 pl-5 text-4xl">Recently played tracks</h2>
+      <div className=" pl-5">
+        <RecentPlayed />
+      </div>
+
       <h1 className="pt-8 pl-5 text-4xl">Playlists</h1>
       <Link href="/center">
         <a>
@@ -65,9 +70,6 @@ const MainScreen = () => {
           </div>
         </a>
       </Link>
-
-      <h2 className="pl-5 text-4xl">Trendings</h2>
-      <div className="pb-8 pl-5">....</div>
 
       <div className="sticky bottom-0">
         <Player />

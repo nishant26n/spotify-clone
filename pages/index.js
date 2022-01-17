@@ -1,5 +1,4 @@
 import { getSession } from "next-auth/react";
-// import Center from "../components/Center";
 import MainScreen from "../components/MainScreen";
 
 export default function Home() {

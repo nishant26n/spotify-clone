@@ -3,9 +3,9 @@ import { SessionProvider } from "next-auth/react";
 import { RecoilRoot } from "recoil";
 import Layout from "../components/Layout";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <SessionProvider>
+    <SessionProvider session={session}>
       <RecoilRoot>
         <Layout>
           <Component {...pageProps} />
