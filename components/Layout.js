@@ -1,4 +1,3 @@
-import Player from "./Player";
 import Sidebar from "./Sidebar";
 import { useRouter } from "next/router";
 

@@ -2,9 +2,10 @@ import { PlayIcon } from "@heroicons/react/outline";
 import React from "react";
 import { useRecoilState } from "recoil";
 import { currentTrackIdState, isPlayingState } from "../atoms/songAtom";
-import SpotifyAPI from "../lib/spotify";
+import useSpotify from "../hooks/useSpotify";
 
 const RecentTrack = ({ track }) => {
+  const spotifyAPI = useSpotify();
   const [currentTrackId, setCurrentTrackId] =
     useRecoilState(currentTrackIdState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
@@ -12,7 +13,7 @@ const RecentTrack = ({ track }) => {
   const playSong = () => {
     setCurrentTrackId(track.track.id);
     setIsPlaying(true);
-    SpotifyAPI.play({
+    spotifyAPI.play({
       uris: [track.track.uri],
     });
   };
