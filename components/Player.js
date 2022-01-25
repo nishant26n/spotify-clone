@@ -107,7 +107,7 @@ const Player = () => {
       <div className="flex items-center space-x-3 md:space-x-4 justify-end pr-5 ">
         <VolumeUpIcon className="button" />
         <input
-          className="w-14 md:w-20"
+          className="bg-green-599 w-14 md:w-20"
           type="range"
           value={volume}
           onChange={(e) => setVolume(Number(e.target.value))}
